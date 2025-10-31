@@ -9,12 +9,10 @@
   <style>
     /* Minimal inline styles to get started — move to main.css later */
     :root{
-      --bg:#0f0f14; --fg:#eaeaea; --accent:#77c6a1;
+      --bg:#111119; --fg:#eaeaea; --accent:#77c6a1;
     }
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    html,body{height:100%;margin:2;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
     body{background:var(--bg);color:var(--fg);display:flex;align-items:center;justify-content:center;}
-    .stage{width:92vw;max-width:1200px;height:80vh;position:relative;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.6)}
-    .apps{position:absolute;left:28px;top:28px;display:flex;gap:14px;z-index:40}
     .app{width:120px;height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.06)}
     .app:hover{transform:translateY(-6px);transition:transform .18s}
     .content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:120px 40px}
@@ -24,11 +22,30 @@
 <body>
   <div class="stage" id="stage">
     <div class="apps">
-      <div class="app" data-tab="garden" title="Digital Garden">🌱<div style="font-size:11px;margin-top:6px">garden</div></div>
-      <div class="app" data-tab="tasks" title="Task Manager">🧠<div style="font-size:11px;margin-top:6px">tasks</div></div>
-      <div class="app" data-tab="links" title="Cool Links">🔗<div style="font-size:11px;margin-top:6px">links</div></div>
-      <div class="app" data-tab="guestbook" title="Guestbook">✍️<div style="font-size:11px;margin-top:6px">guestbook</div></div>
-      <div class="app" data-tab="vibe" title="Vibe Room">🪩<div style="font-size:11px;margin-top:6px">vibe</div></div>
+      <div class="app" data-tab="garden" title="Digital Garden">
+        <span class="app-emoji">🌱</span>
+        <span class="app-label">garden</span>
+      </div>
+      <div class="app" data-tab="tasks" title="Task Manager">
+        <span class="app-emoji">🧠</span>
+        <span class="app-label">tasks</span>
+      </div>
+      <div class="app" data-tab="links" title="Cool Links">
+        <span class="app-emoji">🔗</span>
+        <span class="app-label">links</span>
+      </div>
+      <div class="app" data-tab="guestbook" title="Guestbook">
+        <span class="app-emoji">✍️</span>
+        <span class="app-label">guestbook</span>
+      </div>
+      <div class="app" data-tab="vibe" title="Vibe Room">
+        <span class="app-emoji">🪩</span>
+        <span class="app-label">vibe</span>
+      </div>
+      <div class="app" data-tab="home" title="Home">
+        <span class="app-emoji">🏠</span>
+        <span class="app-label">home</span>
+      </div>
     </div>
 
     <div class="content" id="content">
@@ -99,6 +116,16 @@
         fetch(`tabs/${tab}.html`).then(r=>r.text()).then(html=>content.innerHTML=html).catch(()=>{/* ignore */});
       }
     })();
+  </script>
+  <script>
+    // Creates 50 random stars
+    for (let i = 0; i < 70; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(star);
+    }
   </script>
 </body>
 </html>

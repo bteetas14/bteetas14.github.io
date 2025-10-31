@@ -1657,3 +1657,153 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+
+	/* Floating Stars Animation Test */
+
+	body {
+		background: radial-gradient(ellipse at center, #090a10 0%, #000 100%);
+		overflow: hidden;
+	}
+
+	.star {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		border-radius: 50%;
+		background: white;
+		opacity: 0.6;
+		animation: twinkle 2s infinite ease-in-out alternate;
+	}
+
+	@keyframes twinkle {
+		from { opacity: 0.2; transform: scale(0.9); }
+		to   { opacity: 1;   transform: scale(1.2); }
+	}
+
+	/* Stage container (main box) */
+	.stage {
+		width: 92vw;
+		max-width: 1375px;
+		height: 86vh;
+		position: relative;
+		border-radius: 16px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 4px 4px;
+		box-sizing: border-box;
+		box-shadow: 0 0 25px 5px rgba(127, 17, 22, 0.6);
+		animation: glowShift 8s ease-in-out infinite alternate;
+	}  
+
+	@keyframes glowShift {
+		0% {
+		  box-shadow: 0 0 25px 5px rgba(27, 124, 131, 0.6); /* teal */
+		}
+		25% {
+		  box-shadow: 0 0 25px 5px rgba(85, 154, 255, 0.6); /* blue */
+		}
+		50% {
+		  box-shadow: 0 0 25px 5px rgba(186, 85, 211, 0.6); /* purple */
+		}
+		75% {
+		  box-shadow: 0 0 25px 5px rgba(255, 130, 130, 0.6); /* pink/red */
+		}
+		100% {
+		  box-shadow: 0 0 25px 5px rgba(255, 207, 64, 0.6); /* gold */
+		}
+	}
+
+	/* --- Custom App Menu Styles --- */
+	.apps {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		gap: 18px;
+		position: relative;
+		left: 0;
+		right: 0;
+		top: 28px;
+		z-index: 40;
+		padding: 0 50px;
+	}
+
+	.app {
+		flex: 1 1 0;
+		min-width: 0;
+		margin: 0;
+		border-radius: 14px;
+	}
+
+	.app {
+		width: 130px;
+		height: 130px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: rgba(28, 30, 38, 0.55);
+		border-radius: 18px;
+		box-shadow: 0 4px 24px 2px rgba(26,28,42,0.26), 0 1px 4px 0 rgba(50,255,215,0.06);
+		border: 1.5px solid rgba(255,255,255,0.07);
+		backdrop-filter: blur(8px) saturate(1.6);
+		cursor: pointer;
+		transition: transform .18s, box-shadow .22s, background .18s, border .22s;
+		color: var(--fg, #eaeaea);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.app:hover {
+		background: rgba(60, 80, 90, 0.26);
+		box-shadow: 0 8px 38px 3px rgba(60,255,220,0.10), 0 2px 14px 2px rgba(125,215,255,0.20);
+		border: 2.5px solid var(--accent, #77c6a1);
+		transform: translateY(-8px) scale(1.035);
+	}
+
+	.app .app-emoji {
+		font-size: 2.5rem;
+		margin-bottom: 8px;
+		letter-spacing: 0;
+		filter: drop-shadow(0 2px 3px rgba(90,230,200,0.12));
+	}
+
+	.app .app-label {
+		font-size: 1.09rem;
+		font-weight: 450;
+		color: #eaeaea;
+		margin-top: 0px;
+		letter-spacing: 0.06em;
+		text-align: center;
+		opacity: 0.94;
+		user-select: none;
+	}
+
+	@media (max-width: 800px) {
+	.apps {
+		flex-wrap: wrap;
+		width: 98%;
+		left: 1%;
+		right: 1%;
+		top: 12px;
+		padding: 0;
+		gap: 8px;
+	}
+	.app {
+		flex: 1 1 42vw;
+		margin: 0;
+		min-width: 135px;
+		max-width: 100%;
+	}
+	.app .app-emoji {
+		font-size: 1.33rem;
+	}
+	.app .app-label {
+		font-size: 0.94rem;
+	}
+	}
+	/* --- End App Menu Styles --- */
