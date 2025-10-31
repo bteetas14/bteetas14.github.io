@@ -1,0 +1,18 @@
+<form id="gb">
+    <input id="name" placeholder="name" required />
+    <input id="msg" placeholder="message" required />
+    <button>Sign</button>
+  </form>
+  <ul id="entries"></ul>
+  <script>
+    const entries = JSON.parse(localStorage.getItem('guestbook')||'[]');
+    function render(){ document.getElementById('entries').innerHTML = entries.map(e=>`<li><b>${e.name}</b>: ${e.msg}</li>`).join(''); }
+    document.getElementById('gb').addEventListener('submit', e=>{
+      e.preventDefault();
+      const name=document.getElementById('name').value, msg=document.getElementById('msg').value;
+      entries.unshift({name,msg});
+      localStorage.setItem('guestbook',JSON.stringify(entries));
+      render();
+    });
+    render();
+  </script>

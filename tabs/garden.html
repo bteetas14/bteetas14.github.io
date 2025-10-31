@@ -1,0 +1,21 @@
+<section style="text-align:center;max-width:70ch">
+    <h2>Digital Garden</h2>
+    <p>Click a plant to read a short note.</p>
+    <div style="display:flex;gap:18px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+      <button class="plant" data-note="GoLang — still growing">🌱 GoLang</button>
+      <button class="plant" data-note="System design — needs watering">🌿 System Design</button>
+      <button class="plant" data-note="Frontend projects — fallen leaves">🍂 Frontend</button>
+      <button class="plant" data-note="New ideas — blooming soon">🌸 Ideas</button>
+    </div>
+  
+    <div id="note" style="margin-top:20px;opacity:.95"></div>
+  
+    <script>
+      document.querySelectorAll('.plant').forEach(p=>{
+        p.addEventListener('click',()=>{
+          const note = p.dataset.note;
+          document.getElementById('note').innerText = note;
+        });
+      });
+    </script>
+  </section>
